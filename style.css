@@ -847,54 +847,39 @@ button { cursor: none; font-family: inherit; border: none; background: none; }
 .team-skin { background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%); overflow: hidden; }
 .team-skin img { width: 100%; height: auto; transition: transform 0.5s ease; }
 
-/* Skin face portrait — crops the 8×8 face from the 64×64 texture */
+/* Full body skin render */
 .team-skin.skin-preview-wrap {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  height: 220px;
-  background: radial-gradient(ellipse at center, rgba(139,92,246,0.1) 0%, #080810 100%);
+  height: 280px;
+  background: radial-gradient(ellipse at 50% 80%, rgba(139,92,246,0.12) 0%, #080810 70%);
   position: relative;
   overflow: hidden;
+  padding-bottom: 0;
 }
 .team-skin.skin-preview-wrap::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgba(139,92,246,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139,92,246,0.05) 1px, transparent 1px);
-  background-size: 14px 14px;
+    linear-gradient(rgba(139,92,246,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
 }
-.skin-face {
-  /* 
-    Minecraft skin is 64×64px.
-    Face front: x=8–16, y=8–16  (8×8 pixels).
-    Scale 20× → display at 160×160px.
-    Full bg: 64×20 = 1280px.
-    Offset: 8×20 = 160px from top-left.
-  */
-  width: 160px;
-  height: 160px;
-  background-size: 1280px 1280px;
-  background-position: -160px -160px;
+.skin-full-body {
+  height: 260px;
+  width: auto;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   position: relative;
   z-index: 1;
-  border-radius: 12px;
-  box-shadow:
-    0 0 0 4px rgba(139,92,246,0.2),
-    0 0 32px rgba(139,92,246,0.35),
-    0 12px 32px rgba(0,0,0,0.6);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  filter: drop-shadow(0 0 16px rgba(139,92,246,0.4));
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
-.team-card:hover .skin-face {
-  transform: scale(1.08) translateY(-4px);
-  box-shadow:
-    0 0 0 4px rgba(139,92,246,0.4),
-    0 0 48px rgba(139,92,246,0.5),
-    0 20px 48px rgba(0,0,0,0.7);
+.team-card:hover .skin-full-body {
+  transform: scale(1.05) translateY(-6px);
+  filter: drop-shadow(0 0 28px rgba(139,92,246,0.65));
 }
 .team-card:hover .team-skin img { transform: scale(1.03); }
 .team-skin-empty {
