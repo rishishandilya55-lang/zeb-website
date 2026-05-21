@@ -4,47 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ─── SKINVIEW3D — 3D TEAM RENDERS ───────────────────
-  function initSkinViewers() {
-    if (typeof skinview3d === 'undefined') return;
 
-    // Use raw GitHub URLs to avoid CORS issues with canvas
-    const BASE = 'https://raw.githubusercontent.com/rishishandilya55-lang/zeb-website/main/assets/';
-
-    const members = [
-      { id: 'skin-minecmasters', skin: BASE + 'minecmasters.png' },
-      { id: 'skin-itsmerishi',   skin: BASE + 'itsmerishi4228.png' },
-      { id: 'skin-altsensei',    skin: BASE + 'altsensei.png' },
-    ];
-
-    members.forEach(({ id, skin }) => {
-      const canvas = document.getElementById(id);
-      if (!canvas) return;
-
-      const viewer = new skinview3d.SkinViewer({
-        canvas,
-        width: 200,
-        height: 270,
-      });
-
-      viewer.renderer.setClearColor(0x000000, 0);
-      viewer.globalLight.intensity = 3.2;
-      viewer.cameraLight.intensity = 0.8;
-
-      // Load the skin
-      viewer.loadSkin(skin);
-
-      // Simple walking animation
-      const walk = viewer.animations.add(skinview3d.WalkingAnimation);
-      walk.speed = 0.8;
-
-      // Slow auto-rotate
-      viewer.autoRotate      = true;
-      viewer.autoRotateSpeed = 0.5;
-    });
-  }
-
-  window.addEventListener('load', initSkinViewers);
 
   // ─── CUSTOM CURSOR ──────────────────────────────────
   const cursor = document.getElementById('cursor');
